@@ -11,6 +11,9 @@ const userController = {
       res.redirect('/signin')
     })
   },
+  signInPage: (req, res) => {
+    res.render('signin')
+  },
 }
 
 module.exports = userController
