@@ -28,6 +28,11 @@ const userController = {
       err ? next(err) : res.render('users/profile', data)
     })
   },
+  editUser: (req, res, next) => {
+    userServices.editUser(req, (err, data) => {
+      err ? next(err) : res.render('users/edit', data)
+    })
+  },
 }
 
 module.exports = userController
