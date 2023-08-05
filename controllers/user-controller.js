@@ -58,6 +58,11 @@ const userController = {
       err ? next(err) : res.redirect('back')
     })
   },
+  removeLike: (req, res, next) => {
+    userServices.removeLike(req, (err) => {
+      err ? next(err) : res.redirect('back')
+    })
+  },
 }
 
 module.exports = userController
