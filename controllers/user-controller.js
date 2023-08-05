@@ -41,6 +41,11 @@ const userController = {
       return res.redirect(`/users/${req.user.id}`)
     })
   },
+  addFavorite: (req, res, next) => {
+    userServices.addFavorite(req, (err, data) => {
+      err ? next(err) : res.redirect('back')
+    })
+  },
 }
 
 module.exports = userController

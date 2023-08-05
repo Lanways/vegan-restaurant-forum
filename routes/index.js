@@ -24,6 +24,8 @@ router.get('/restaurants/:id/dashboard', authenticated, restaurantController.get
 router.get('/restaurants/:id', authenticated, restaurantController.getRestaurant) 
 router.get('/restaurants', authenticated, restaurantController.getRestaurants)
 
+router.post('/favorite/:restaurantId', authenticated, userController.addFavorite)
+
 router.use('/', (req, res) => { res.redirect('/restaurants') })
 router.use('/', generalErrorHandler)
 
