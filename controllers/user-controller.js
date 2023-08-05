@@ -46,6 +46,13 @@ const userController = {
       err ? next(err) : res.redirect('back')
     })
   },
+  removeFavorite: (req, res, next) => {
+    userServices.removeFavorite(req, (err, data) => {
+      if (err) return next(err)
+      req.session.createData = data
+      return res.redirect('back')
+    })
+  },
 }
 
 module.exports = userController
