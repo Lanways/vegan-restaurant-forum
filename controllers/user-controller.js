@@ -53,6 +53,11 @@ const userController = {
       return res.redirect('back')
     })
   },
+  addLike: (req, res, next) => {
+    userServices.addLike(req, (err) => {
+      err ? next(err) : res.redirect('back')
+    })
+  },
 }
 
 module.exports = userController
