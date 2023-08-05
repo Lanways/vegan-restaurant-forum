@@ -72,6 +72,11 @@ const userController = {
     userServices.addFollowing(req, (err) => {
       err ? next(err) : res.redirect('back')
     })
+  },
+  removeFollowing: (req, res, next) => {
+    userServices.removeFollowing(req, (err) => {
+      err ? next(err) : res.redirect('back')
+    })
   }
 }
 

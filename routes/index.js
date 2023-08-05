@@ -38,6 +38,7 @@ router.delete('/comments/:id', authenticated, authenticatedAdmin, commentControl
 router.post('/comments', authenticated, commentController.postComment)
 
 router.post('/following/:userId', authenticated, userController.addFollowing)
+router.delete('/following/:userId', authenticated, userController.removeFollowing)
 
 router.use('/', (req, res) => { res.redirect('/restaurants') })
 router.use('/', generalErrorHandler)
