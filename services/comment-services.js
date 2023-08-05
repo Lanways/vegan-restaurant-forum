@@ -20,6 +20,15 @@ const commentServices = {
       })
       .then(newComment => cb(null, { newComment }))
       .catch(err => cb(err))
+  },
+  deleteComment: (req, cb) => {
+    return Comment.findByPk(req.params.id)
+      .then(comment => {
+        if (!comment) throw new Error(`Comment didn't exist!`)
+        return comment.destroy()
+      })
+      .then(deletedComent => cb(null, { deletedComent }))
+      .catch(err => cb(err))
   }
 }
 

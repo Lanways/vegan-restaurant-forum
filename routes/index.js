@@ -3,7 +3,7 @@ const router = express.Router()
 const userController = require('../controllers/user-controller')
 const restaurantController = require('../controllers/restaurant-controller')
 const passport = require('../config/passport')
-const { authenticated } = require('../middleware/auth')
+const { authenticated, authenticatedAdmin } = require('../middleware/auth')
 const upload = require('../middleware/muter')
 const { generalErrorHandler } = require('../middleware/error-handler')
 const commentController = require('../controllers/comment-controller')
@@ -31,6 +31,7 @@ router.delete('/favorite/:restaurantId', authenticated, userController.removeFav
 router.post('/like/:restaurantId', authenticated, userController.addLike)
 router.delete('/like/:restaurantId', authenticated, userController.removeLike)
 
+router.delete('/comments/:id', authenticated, authenticatedAdmin, commentController.deleteComment)
 router.post('/comments', authenticated, commentController.postComment)
 
 router.use('/', (req, res) => { res.redirect('/restaurants') })
