@@ -6,6 +6,7 @@ const passport = require('../config/passport')
 const { authenticated } = require('../middleware/auth')
 const upload = require('../middleware/muter')
 const { generalErrorHandler } = require('../middleware/error-handler')
+const commentController = require('../controllers/comment-controller')
 
 router.get('/signup', userController.signUpPage)
 router.post('/signup', userController.signUp)
@@ -29,6 +30,8 @@ router.delete('/favorite/:restaurantId', authenticated, userController.removeFav
 
 router.post('/like/:restaurantId', authenticated, userController.addLike)
 router.delete('/like/:restaurantId', authenticated, userController.removeLike)
+
+router.post('/comments', authenticated, commentController.postComment)
 
 router.use('/', (req, res) => { res.redirect('/restaurants') })
 router.use('/', generalErrorHandler)
