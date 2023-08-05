@@ -23,6 +23,11 @@ const userController = {
     req.logout()
     res.redirect('/signin')
   },
+  getUser: (req, res, next) => {
+    userServices.getUser(req, (err, data) => {
+      err ? next(err) : res.render('users/profile', data)
+    })
+  },
 }
 
 module.exports = userController
