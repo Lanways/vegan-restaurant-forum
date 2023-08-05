@@ -63,6 +63,11 @@ const userController = {
       err ? next(err) : res.redirect('back')
     })
   },
+  getTopUsers: (req, res, next) => {
+    userServices.getTopUsers(req, (err, data) => {
+      err ? next(err) : res.render('top-users', data)
+    })
+  }
 }
 
 module.exports = userController
