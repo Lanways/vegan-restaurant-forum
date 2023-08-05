@@ -33,6 +33,14 @@ const userController = {
       err ? next(err) : res.render('users/edit', data)
     })
   },
+  putUser: (req, res, next) => {
+    userServices.putUser(req, (err, data) => {
+      if (err) return next(err)
+      req.flash('success_messages', '使用者資料編輯成功')
+      req.session.createData = data
+      return res.redirect(`/users/${req.user.id}`)
+    })
+  },
 }
 
 module.exports = userController
