@@ -9,6 +9,11 @@ const restaurantController = {
       err ? next(err) : res.render('restaurant', data)
     })
   },
+  getDashboard: (req, res, next) => {
+    restaurantServices.getDashboard(req, (err, data) => {
+      err ? next(err) : res.render('dashboard', data)
+    })
+  },
 }
 
 module.exports = restaurantController
