@@ -5,6 +5,7 @@ const restaurantController = require('../controllers/restaurant-controller')
 const passport = require('../config/passport')
 const { authenticated } = require('../middleware/auth')
 const upload = require('../middleware/muter')
+const { generalErrorHandler } = require('../middleware/error-handler')
 
 router.get('/signup', userController.signUpPage)
 router.post('/signup', userController.signUp)
@@ -21,5 +22,6 @@ router.put('/users/:id', authenticated, upload.single('image'), userController.p
 router.get('/restaurants', authenticated, restaurantController.getRestaurants)
 
 router.use('/', (req, res) => { res.redirect('/restaurants') })
+router.use('/', generalErrorHandler)
 
 module.exports = router
