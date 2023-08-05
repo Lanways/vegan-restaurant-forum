@@ -13,6 +13,7 @@ router.post('/signin', passport.authenticate('local',
     failureRedirect: '/signin',
     failureFlash: true
   }), userController.signIn)
+router.get('/logout', userController.logout)
 
 router.get('/restaurants', authenticated, restaurantController.getRestaurants)
 
