@@ -12,13 +12,14 @@ const { getUser } = require('./helpers/auth-helpers')
 const passport = require('passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const path = require('path')
+const methodOverride = require('method-override')
 
 app.engine('hbs', handlebars({ extname: '.hbs', helpers: handlebarsHelpers }))
 app.set('view engine', 'hbs')
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use('/upload', express.static(path.join(__dirname, 'upload')))
-
+app.use(methodOverride('_method'))
 
 app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: false }))
 app.use(passport.initialize())
