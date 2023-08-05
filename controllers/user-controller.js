@@ -67,6 +67,11 @@ const userController = {
     userServices.getTopUsers(req, (err, data) => {
       err ? next(err) : res.render('top-users', data)
     })
+  },
+  addFollowing: (req, res, next) => {
+    userServices.addFollowing(req, (err) => {
+      err ? next(err) : res.redirect('back')
+    })
   }
 }
 
