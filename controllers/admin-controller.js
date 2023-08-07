@@ -14,6 +14,14 @@ const adminController = {
       err ? next(err) : res.render('admin/create-restaurant', data)
     })
   },
+  postRestaurant: (req, res, next) => {
+    adminServices.postRestaurant(req, (err, data) => {
+      if (err) return next(err)
+      req.flash('success_messages', 'restaurant was successfully created')
+      req.session.createdData = data
+      return res.redirect('/admin/restaurants')
+    })
+  },
 }
 
 module.exports = adminController
