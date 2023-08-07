@@ -22,6 +22,11 @@ const adminController = {
       return res.redirect('/admin/restaurants')
     })
   },
+  getRestaurant: (req, res, next) => {
+    adminServices.getRestaurant(req, (err, data) => {
+      err ? next(err) : res.render('admin/restaurant', data)
+    })
+  },
 }
 
 module.exports = adminController

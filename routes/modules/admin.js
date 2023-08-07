@@ -5,6 +5,7 @@ const categoryController = require('../../controllers/category-controller')
 const upload = require('../../middleware/muter')
 
 router.get('/restaurants/create', adminController.createRestaurant)
+router.get('/restaurants/:id', adminController.getRestaurant)
 router.get('/restaurants', adminController.getRestaurants)
 router.post('/restaurants', upload.single('image'), adminController.postRestaurant)
 
