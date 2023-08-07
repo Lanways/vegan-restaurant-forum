@@ -32,6 +32,14 @@ const adminController = {
       err ? next(err) : res.render('admin/edit-restaurant', data)
     })
   },
+  putRestaurant: (req, res, next) => {
+    adminServices.putRestaurant(req, (err, data) => {
+      if (err) return next(err)
+      req.session.createdData = data
+      req.flash('success_messages', 'restaurant was successfully to update')
+      return res.redirect('/admin/restaurants')
+    })
+  },
 }
 
 module.exports = adminController
