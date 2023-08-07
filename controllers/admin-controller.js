@@ -40,6 +40,13 @@ const adminController = {
       return res.redirect('/admin/restaurants')
     })
   },
+  deleteRestaurant: (req, res, next) => {
+    adminServices.deleteRestaurant(req, (err, data) => {
+      if (err) return next(err)
+      req.session.deleteData = data
+      return res.redirect('/admin/restaurants')
+    })
+  },
 }
 
 module.exports = adminController
