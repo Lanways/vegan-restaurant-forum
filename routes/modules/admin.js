@@ -4,6 +4,8 @@ const adminController = require('../../controllers/admin-controller')
 
 router.get('/restaurants', adminController.getRestaurants)
 
+router.get('/users', adminController.getUsers)
+
 router.use('/', (req, res) => {
   res.redirect('/admin/restaurants')
 })
