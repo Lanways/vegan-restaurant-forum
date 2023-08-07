@@ -9,6 +9,11 @@ const adminController = {
       err ? next(err) : res.render('admin/users', data)
     })
   },
+  createRestaurant: (req, res) => {
+    adminServices.createRestaurant(req, (err, data) => {
+      err ? next(err) : res.render('admin/create-restaurant', data)
+    })
+  },
 }
 
 module.exports = adminController

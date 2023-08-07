@@ -26,6 +26,11 @@ const adminServices = {
       })
       .catch(err => cb(err))
   },
+  createRestaurant: (req, cb) => {
+    return Category.findAll({ raw: true })
+      .then(categories => cb(null, { categories }))
+      .catch(err => cb(err))
+  },
 }
 
 module.exports = adminServices
