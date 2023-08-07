@@ -7,7 +7,9 @@ const { authenticated, authenticatedAdmin } = require('../middleware/auth')
 const upload = require('../middleware/muter')
 const { generalErrorHandler } = require('../middleware/error-handler')
 const commentController = require('../controllers/comment-controller')
+const admin = require('./modules/admin')
 
+router.use('admin', authenticatedAdmin, admin)
 router.get('/signup', userController.signUpPage)
 router.post('/signup', userController.signUp)
 router.get('/signin', userController.signInPage)
@@ -16,11 +18,11 @@ router.post('/signin', passport.authenticate('local',
     failureRedirect: '/signin',
     failureFlash: true
   }), userController.signIn)
-  router.get('/users/top', authenticated, userController.getTopUsers)
-  router.get('/users/:id', authenticated, userController.getUser)
-  router.get('/users/:id/edit', authenticated, userController.editUser)
-  router.put('/users/:id', authenticated, upload.single('image'), userController.putUser)
-  router.get('/logout', userController.logout)
+router.get('/users/top', authenticated, userController.getTopUsers)
+router.get('/users/:id', authenticated, userController.getUser)
+router.get('/users/:id/edit', authenticated, userController.editUser)
+router.put('/users/:id', authenticated, upload.single('image'), userController.putUser)
+router.get('/logout', userController.logout)
 
 router.get('/restaurants/top', authenticated, restaurantController.getTopRestaurants)
 router.get('/restaurants/feeds', authenticated, restaurantController.getFeeds)
