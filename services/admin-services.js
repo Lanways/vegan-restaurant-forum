@@ -1,3 +1,5 @@
+const { Restaurant, Category } = require('../models')
+
 const adminServices = {
   getRestaurants: (req, cb) => {
     Restaurant.findAll({

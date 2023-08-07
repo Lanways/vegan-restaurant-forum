@@ -9,7 +9,7 @@ const { generalErrorHandler } = require('../middleware/error-handler')
 const commentController = require('../controllers/comment-controller')
 const admin = require('./modules/admin')
 
-router.use('admin', authenticatedAdmin, admin)
+router.use('/admin', authenticatedAdmin, admin)
 router.get('/signup', userController.signUpPage)
 router.post('/signup', userController.signUp)
 router.get('/signin', userController.signInPage)
