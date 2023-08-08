@@ -14,6 +14,7 @@ router.post('/restaurants', upload.single('image'), adminController.postRestaura
 
 router.get('/categories', categoryController.getCategories)
 
+router.patch('/users/:id', adminController.patchUser)
 router.get('/users', adminController.getUsers)
 
 router.use('/', (req, res) => {
