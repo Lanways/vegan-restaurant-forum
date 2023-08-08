@@ -22,6 +22,14 @@ const categoryController = {
       return res.redirect('/admin/categories')
     })
   },
+  deleteCategory: (req, res, next) => {
+    categoryServices.deleteCategory(req, (err, data) => {
+      if (err) return next(err)
+      req.flash('success_messages', 'category was successfully deleted')
+      req.session.createdData = data
+      return res.redirect('/admin/categories')
+    })
+  }
 }
 
 module.exports = categoryController
