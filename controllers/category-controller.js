@@ -14,6 +14,14 @@ const categoryController = {
       return res.redirect('/admin/categories')
     })
   },
+  putCategory: (req, res, next) => {
+    categoryServices.putCategory(req, (err, data) => {
+      if (err) return next(err)
+      req.flash('success_messages', 'category was successfully updated')
+      req.session.createdData = data
+      return res.redirect('/admin/categories')
+    })
+  },
 }
 
 module.exports = categoryController
