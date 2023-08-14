@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    environment:
+      SESSION_SECRET: ${SESSION_SECRET}
+      IMGUR_CLIENT_ID: ${IMGUR_CLIENT_ID}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - redis
+    command: sh -c "npx sequelize db:migrate && npx sequelize db:seed:all && npm start"
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  redis:
+    image: redis:6
+    volumes:
+      - redis-data:/data
+
+volumes:
+  mysql-data:
+  redis-data:
