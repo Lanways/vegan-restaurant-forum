@@ -49,7 +49,10 @@ app.use(session({
   store: new RedisStore({ client }),
   secret: process.env.SESSION_SECRET,
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000
+  }
 }))
 
 app.use(passport.initialize())
