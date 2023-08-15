@@ -4,8 +4,6 @@ const { imgurFileHandler } = require('../helpers/file-helpers')
 
 const userServices = {
   signUp: (req, cb) => {
-    if (req.body.password != req.body.passwordCheck) throw new Error('Password do not mathc')
-
     User.findOne({ where: { email: req.body.email } })
       .then(user => {
         if (user) throw new Error('Email already exists!')

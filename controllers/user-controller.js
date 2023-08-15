@@ -2,17 +2,40 @@ const userServices = require('../services/user-services')
 
 const userController = {
   signUpPage: (req, res) => {
-    res.render('signup')
+    let inputData = {}
+    if (req.session.input) {
+      inputData = req.session.input
+      delete req.session.input
+    }
+    res.render('signup', {
+      input: inputData,
+    })
   },
   signUp: (req, res, next) => {
+    if (req.body.password !== req.body.passwordCheck) {
+      req.flash('error_messages', 'Password do not match')
+      req.session.input = req.body
+      return res.redirect('/signup')
+    }
     userServices.signUp(req, (err, data) => {
-      if (err) return next(err)
-      req.flash('success_messages', '成功註冊帳號!')
+      if (err) {
+        req.flash('error_messages', err.message)
+        req.session.input = req.body
+        return res.redirect('/signup')
+      }
+      req.flash('success_messages', '成功註冊!')
       res.redirect('/signin')
     })
   },
   signInPage: (req, res) => {
-    res.render('signin')
+    let inputData = {}
+    if (req.session.input) {
+      inputData = req.session.input
+      delete req.session.input
+    }
+    res.render('signin',{
+      input: inputData
+    })
   },
   signIn: (req, res) => {
     req.flash('success_messages', '成功登入!')

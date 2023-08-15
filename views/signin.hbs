@@ -1,19 +1,22 @@
 <div class="mb-4 text-center">
   <h1 class="h3 font-weight-normal mb-3">Sign In</h1>
 </div>
-<form class="form-signin" action="/signin" method="POST">
-  <div class="form-row mb-3">
+<form class="form-signin mx-auto" action="/signin" method="POST">
+  <div class="form-row mb-3" style="width: 450px; margin: auto;">
     <label class="form-label" for="email">Email</label>
-    <input class="form-control" id="email" type="text" name="email" class="form-control" placeholder="Email" required
-      autofocus>
+    <input class="form-control" id="email" type="text" name="email" class="form-control" placeholder="Email"
+      value="{{ input.email }}" required autofocus>
   </div>
-  <div class="form-row mb-3">
+  <div class="form-row mb-3" style="width: 450px; margin: auto;">
     <label class="form-label" for="password">Password</label>
     <input class="form-control" id="password" type="password" name="password" class="form-control"
       placeholder="Password" required>
   </div>
-  <button class="btn btn-primary btn-block" type="submit">Submit</button>
+  <div class="d-flex flex-column align-items-center">
+    <button class="btn btn-primary" type="submit" style="width: 450px;">Submit</button>
+    <button href="/auth/facebook" class="btn btn-info mt-2" style="width: 450px;">Facebook Login</button>
+  </div>
 </form>
-<div class="mb-4 text-center">
+<div class="mb-4 text-center mt-2">
   <p><a href="/signup">Sign Up</a></p>
 </div>

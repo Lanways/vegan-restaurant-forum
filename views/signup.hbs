@@ -1,14 +1,17 @@
 <div class="mb-4 text-center">
   <h1 class="h3 font-weight-normal mb-3">Sign Up</h1>
 </div>
-<form class="form-signup" action="/signup" method="POST" style="width: 100%;">
+
+<form class="form-signup mx-auto" action="/signup" method="POST" style="width: 450px;">
   <div class="form-row mb-3">
     <label class="form-label" for="name">Name</label>
-    <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+    <input type="text" id="name" name="name" class="form-control" placeholder="Name" value="{{ input.name }}" required
+      autofocus>
   </div>
   <div class="form-row mb-3">
     <label class="form-label" for="email">Email</label>
-    <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+    <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="{{ input.email }}"
+      required>
   </div>
   <div class="form-row mb-3">
     <label class="form-label" for="password">Password</label>
@@ -19,8 +22,13 @@
     <input type="password" id="passwordCheck" name="passwordCheck" class="form-control" placeholder="Password Check"
       required>
   </div>
-  <button class="btn btn-primary btn-block" type="submit">Submit</button>
+
+  <div class="d-flex flex-column align-items-center">
+    <button class="btn btn-primary btn-block" type="submit" style="width: 450px;">Submit</button>
+    <button href="/auth/facebook" class="btn btn-info mt-2" style="width: 450px;">Facebook Login</button>
+  </div>
 </form>
-<div class="mb-4 text-center">
+
+<div class="mb-4 text-center mt-2">
   <p><a href="/signin">Sign In</a></p>
 </div>
