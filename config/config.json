@@ -3,7 +3,7 @@
     "username": "root",
     "password": "password",
     "database": "vegan_restaurant_forum",
-    "host": "mysql",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
@@ -18,6 +18,13 @@
     "password": null,
     "database": "database_production",
     "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "docker": {
+    "username": "root",
+    "password": "password",
+    "database": "vegan_restaurant_forum",
+    "host": "mysql",
     "dialect": "mysql"
   }
 } 
