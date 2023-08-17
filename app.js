@@ -14,13 +14,9 @@ const passport = require('passport')
 const handlebarsHelpers = require('./helpers/handlebars-helpers')
 const path = require('path')
 const methodOverride = require('method-override')
-
 const RedisStore = require("connect-redis")(session)
 
-let client = redis.createClient({
-  host: process.env.REDIS_HOST || 'localhost',
-  port: 6379
-})
+let client = redis.createClient(process.env.REDIS_URL)
 
 client.on('ready', () => {
   console.log('Redis client is ready.')

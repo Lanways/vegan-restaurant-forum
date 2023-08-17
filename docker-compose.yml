@@ -5,7 +5,7 @@ services:
     build: .
     environment:
       NODE_ENV: docker
-      REDIS_HOST: redis
+      REDIS_URL: redis://redis:6379
       SESSION_SECRET: ${SESSION_SECRET}
       IMGUR_CLIENT_ID: ${IMGUR_CLIENT_ID}
     ports:
