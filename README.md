@@ -31,7 +31,43 @@ touch .env
 docker-compose up -d
 ```
 * 此命令將啟動並運行所有的服務。預設情況下，您的應用會在 http://localhost:3000 上運行。
-4. 停止 Docker Compose
+4. 查詢container name。 
+```
+docker container ls
+```
+5. 進入資料庫容器。
+```
+docker exec -it <your_container_name> mysql -u root -p
+```
+6. 輸入預設密碼，成功登入後即可開始使用CLI
+```
+password
+```
+7. 建立資料庫。
+```
+CREATE DATABASE trade_tracker;
+```
+使用Ctrl + D 或輸入以下指令退出CLI
+```
+exit
+```
+8. 進入應用容器。
+```
+docker exec -it <your_container_name> /bin/bash
+```
+9. 建立資料庫模型
+```
+npx sequelize db:migrate
+```
+10. 建立資料庫種子資料
+```
+npx sequelize db:seed:all
+```
+11. 此時資料庫已經有完整的種子資料，可以開始使用應用，在瀏覽器輸入
+```
+http://localhost:3000
+```
+12. 停止 Docker Compose
 想要停止專案時，只需在專案的根目錄終端機中執行：
 ```
 docker-compose down
