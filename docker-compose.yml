@@ -6,8 +6,7 @@ services:
       - .env
     environment:
       REDIS_URL: redis://redis:6379
-      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      NODE_ENV: docker
     ports:
       - "3000:3000"
     depends_on:
@@ -15,6 +14,8 @@ services:
       - redis
   mysql:
     image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: password
     volumes:
       - mysql-data:/var/lib/mysql
   redis:
