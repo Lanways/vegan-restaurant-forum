@@ -45,7 +45,7 @@ password
 ```
 7. 建立資料庫。
 ```
-CREATE DATABASE trade_tracker;
+CREATE DATABASE vegan_restaurant_forum;
 ```
 使用Ctrl + D 或輸入以下指令退出CLI
 ```
