@@ -1,6 +1,6 @@
 # Vegan-Restaurant-Forum
 使用 Node.js + Express 建構的後端，搭配Handlbars 模板引擎和 MySQL 關連式資料庫，創建的餐廳論壇
-* [Live Demo of Restaurant-Forum](https://vegan-restaurant-forum.onrender.com/)
+* [Live Demo of Restaurant-Forum](https://www.ezrestaurant.xyz/)
 
 ![### Restaurant-Forum](https://i.imgur.com/bsINO7N.png)
 # 專案功能簡介
